@@ -1,1 +1,1 @@
-# syncrhonizer
+# synchronizer
