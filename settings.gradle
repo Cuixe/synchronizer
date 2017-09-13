@@ -1,0 +1,11 @@
+rootProject.name = 'synchronizer'
+include 'api'
+include 'configuration'
+include 'persistence'
+include 'retransmission'
+include 'nodeSync'
+findProject(':nodeSync')?.name = 'sync'
+include 'nodesSync'
+include 'persistence'
+include 'network'
+

@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package tutorial;
+
+option java_package = "com.synchronizer.api.messaging.proto";
+option java_outer_classname = "Sync";
+
+message Header {
+    int64 id = 1;
+    int32 sequence = 2;
+    int64 timestamp = 3;
+    int64 nanos = 4;
+}
+
+enum Type {
+    PING = 0;
+    PING_RESPONSE = 1;
+    RESYNC_REQUEST = 2;
+    RESET_SEQUENCE = 3;
+    RESYNC_MESSAGE = 4;
+    SYNC_MESSAGE = 5;
+
+}
+
+message SyncProtocol {
+    Header header = 1;
+    oneof message {
+        Ping ping = 2;
+        PingResponse pingResponse = 3;
+        ResyncRequest syncRequest = 4;
+        ResetSequence resetSequence = 5;
+        ResyncMessage resyncMessage = 6;
+        SyncMessage syncMessage = 7;
+        SyncMessageResponse syncMessageResponse = 8;
+    }
+}
+
+message Ping {
+    int32 pingSequence = 1;
+}
+
+message PingResponse {
+    int32 ackPingSequence = 1;
+}
+
+message ResyncRequest {
+    int32 fromSequence = 1;
+    int32 toSequence = 2;
+}
+
+message ResetSequence {
+    int64 nextSequence = 1;
+}
+
+message ResyncMessage {
+    bytes message = 1;
+}
+
+message SyncMessage {
+    int32 messageId = 1;
+}
+
+message SyncMessageResponse {
+    int32 messageId = 1;
+    int32 status = 2;
+}
+
