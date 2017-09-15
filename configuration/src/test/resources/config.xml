@@ -1,0 +1,7 @@
+<syncronizer>
+    <synchronizedNodes nodeId="1" syncMode="async" attemptsToFail="5">
+        <synchronizedNode id="1" quorumId="1" host="" port="10001" />
+        <synchronizedNode id="2" quorumId="2" host="" port="10002" />
+        <synchronizedNode id="3" quorumId="3" host="" port="10003" />
+    </synchronizedNodes>
+</syncronizer>
